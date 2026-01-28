@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+@import 'tailwindcss';
+
+@keyframes marquee {
+    0% { transform: translateX(0%); }
+    100% { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+    animation: marquee 25s linear infinite;
+}
+
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+
+.font-roboto-mono {
+    font-family: 'Roboto Mono', ui-monospace, SFMono-Regular, monospace;
+}
+
+.font-poppins{
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    @apply antialiased bg-[#efece3] text-[#04141b];
+    font-family: 'Poppins', sans-serif;
+}
+
+/* Ensure Typewriter components are centered and inline */
+.Typewriter {
+    display: inline-block !important;
+    text-align: center !important;
+}
+
+.Typewriter__wrapper {
+    display: inline !important;
+    text-align: center !important;
+}
+
+.Typewriter__cursor {
+    display: inline !important;
+}
+
+.lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+}
+
+.lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+}
+
+.lenis.lenis-stopped {
+    overflow: hidden;
+}
+
+.lenis.lenis-smooth iframe {
+    pointer-events: none;
+}
+
