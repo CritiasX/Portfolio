@@ -300,6 +300,7 @@ export default function Home() {
                         className="max-h-[60vh] sm:max-h-[70vh] md:max-h-[75vh] lg:max-h-[80vh] w-auto rounded-4xl object-cover shadow-2xl"
                         initial="hidden"
                         whileInView="visible"
+                        loading="lazy"
                         viewport={{ once: true, amount: 0.2 }}
                         variants={imageReveal}
                         transition={{ delay: 0.5, ...springTransition }}
