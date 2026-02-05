@@ -51,7 +51,7 @@ export default function Nav() {
 
     return (
         <motion.nav
-            className="w-[90%] lg:w-[80%] mx-auto min-h-16 bg-white/30 border border-white/30 shadow-xl rounded-lg flex flex-col lg:flex-row items-center px-4 py-4 lg:py-0 justify-between mt-5 font-roboto-mono fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
+            className="w-[90%] lg:w-[80%] mx-auto min-h-16 bg-white/20 backdrop-blur-md border border-white/40 shadow-2xl rounded-2xl flex flex-col lg:flex-row items-center px-4 py-4 lg:py-0 justify-between mt-5 font-roboto-mono fixed top-4 left-1/2 transform -translate-x-1/2 z-50"
             initial="hidden"
             animate="visible"
             variants={navVariants}

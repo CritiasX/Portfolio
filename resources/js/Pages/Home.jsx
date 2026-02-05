@@ -79,7 +79,7 @@ export default function Home() {
 
     return (
         <>
-            <Head title="Home" />
+            <Head title="Home"/>
             <Nav/>
             {/* HOME SECTION*/}
             <div id="home" className="mx-auto min-h-screen px-4 sm:px-6 md:px-10 lg:px-12 xl:px-16 flex flex-col justify-center items-center text-center select-none py-20 sm:py-24 md:py-0">
@@ -560,10 +560,10 @@ export default function Home() {
                 </div>
             </div>
             {/* Footer*/}
-            <div id="contacts" className="bg-[#04141b] text-[#F0EAD6] py-6 sm:py-8 flex flex-col">
-                <div className="text-left text-2xl font-roboto-mono flex flex-col gap-1 sm:gap-2 mt-20 ml-70 mb-8">
+            <div id="contacts" className="bg-[#04141b] text-[#F0EAD6] py-8 sm:py-12 md:py-16 lg:py-20 flex flex-col">
+                <div className="text-left text-base sm:text-lg md:text-xl lg:text-2xl xl:text-3xl font-roboto-mono flex flex-col gap-1 sm:gap-2 mt-8 sm:mt-12 md:mt-16 lg:mt-20 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-32 2xl:px-40 mb-6 sm:mb-8">
                     <span>
-                    Let’s build and ship something remarkable. Open to agency
+                    Let's build and ship something remarkable. Open to agency
                     </span>
                         <span>
                         collaborations, freelance work, and fully remote full-time
@@ -578,38 +578,41 @@ export default function Home() {
                         e.preventDefault();
                         scrollToSection('#contacts');
                     }}
-                    className="mt-4 sm:mt-6 bg-[#03346E] hover:bg-[#efece3] hover:text-[#04141b] text-[#F0EAD6] px-5 sm:px-6 py-2.5 sm:py-3 rounded-4xl font-poppins font-bold hover:scale-110 active:scale-95 transition-transform w-max ml-70 mb-20 inline-block text-center cursor-pointer">
+                    className="mt-4 sm:mt-6 bg-[#03346E] hover:bg-[#efece3] hover:text-[#04141b] text-[#F0EAD6] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-4xl font-poppins font-bold hover:scale-110 active:scale-95 transition-transform w-max mx-6 sm:mx-12 md:mx-16 lg:mx-20 xl:mx-32 2xl:mx-40 mb-12 sm:mb-16 md:mb-20 inline-block text-center cursor-pointer text-sm sm:text-base md:text-lg">
                     Let's Connect
                 </a>
-                <div className="grid grid-cols-3 mt-8 text-sm font-roboto-mono justify-evenly items-center ml-70 mr-10 ">
-                    <div className="flex flex-col gap-1 sm:gap-2">
-                        <a href="mailto:tjamesroi@gmail.com">
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mt-8 sm:mt-12 md:mt-16 text-xs sm:text-sm md:text-base font-roboto-mono px-6 sm:px-12 md:px-16 lg:px-20 xl:px-32 2xl:px-40">
+                    <div className="flex flex-col gap-2 sm:gap-3">
+                        <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">Contact</h3>
+                        <a href="mailto:tjamesroi@gmail.com" className="hover:text-[#03346E] transition-colors">
                             tjamesroi@gmail.com
                         </a>
-                        <a href="https://www.instagram.com/jemsroooii/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.instagram.com/jemsroooii/" target="_blank" rel="noopener noreferrer" className="hover:text-[#03346E] transition-colors">
                             Instagram
                         </a>
-                        <a href="https://www.linkedin.com/in/tanglao-jamesroi-1ab47b189/" target="_blank" rel="noopener noreferrer">
+                        <a href="https://www.linkedin.com/in/tanglao-jamesroi-1ab47b189/" target="_blank" rel="noopener noreferrer" className="hover:text-[#03346E] transition-colors">
                             LinkedIn
                         </a>
                     </div>
-                    <div className="flex flex-col gap-1 sm:gap-2">
+                    <div className="flex flex-col gap-2 sm:gap-3">
+                        <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">Navigation</h3>
                         <a
                             href="#home"
                             onClick={(e) => {
                                 e.preventDefault();
                                 scrollToSection('#home');
                             }}
-                            className="hover:underline cursor-pointer">
+                            className="hover:text-[#03346E] transition-colors cursor-pointer">
                             Back to Top
                         </a>
-                        <span>
+                        <span className="text-[#F0EAD6]/70">
                             Timezone: GMT+8
                         </span>
                     </div>
-                    <div className="flex flex-col gap-1 sm:gap-2">
-                        <span>
-                            Designed by James Roi
+                    <div className="flex flex-col gap-2 sm:gap-3 sm:col-span-2 lg:col-span-1">
+                        <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">Credits</h3>
+                        <span className="text-[#F0EAD6]/70">
+                            Designed & Developed by James Roi
                         </span>
                     </div>
                 </div>
