@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useCallback } from 'react';
 import { Head } from "@inertiajs/react";
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 import Typewriter from "typewriter-effect";
 import Nav from "@/components/Nav.jsx";
 import { SiReact, SiLaravel, SiPhp, SiTailwindcss, SiFramer, SiInertia } from 'react-icons/si';
@@ -63,8 +63,43 @@ const springTransition = {
     stiffness: 100
 };
 
+// Project data
+const projects = [
+    {
+        id: 1,
+        title: 'Portfolio Website',
+        description: 'A modern, responsive portfolio built with React, Laravel, and Framer Motion.',
+        tags: ['React', 'Laravel', 'Tailwind'],
+        codeUrl: 'https://github.com/critiasx',
+        liveUrl: '#',
+    },
+    {
+        id: 2,
+        title: 'BulSU Intern-Connect',
+        description: 'Connects BulSU students with internship opportunities and application tracking.',
+        tags: ['Laravel', 'ReactJS', 'TypeScript', 'MySQL'],
+        codeUrl: 'https://github.com/CritiasX/InternConnect-BulSU',
+        liveUrl: null,
+    },
+    {
+        id: 3,
+        title: 'Survey Builder',
+        description: 'A dynamic survey builder to create, distribute, and analyze surveys.',
+        tags: ['Django', 'Javascript', 'MySQL'],
+        codeUrl: 'https://github.com/CritiasX/Survey-Web-Builder-Django',
+        liveUrl: null,
+    },
+];
+
 export default function Home() {
     const lenis = useLenis();
+    const [hoveredProject, setHoveredProject] = useState(null);
+    const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+    const [showConnectModal, setShowConnectModal] = useState(false);
+
+    const handleProjectMouseMove = useCallback((e) => {
+        setMousePos({ x: e.clientX, y: e.clientY });
+    }, []);
 
     // Scroll handler using Lenis
     const scrollToSection = (href) => {
@@ -405,159 +440,89 @@ export default function Home() {
                     </div>
                 </div>
             </div>
-            {/* PROJECTS SECTION*/}
-            <div id="projects" className="min-h-screen bg-[#efece3] py-12 sm:py-16 md:py-20 px-4 sm:px-6 md:px-8">
-                <div className="max-w-7xl mx-auto">
-                    {/* Section Title */}
-                    <motion.div
-                        className="text-center mb-12 sm:mb-16"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={sectionTitle}
-                        transition={{ duration: 0.6, ...springTransition }}>
-                        <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-poppins font-bold text-[#04141b] mb-2 sm:mb-4">
-                            My Projects
-                        </h2>
-                        <p className="text-sm sm:text-base md:text-lg lg:text-xl font-roboto-mono text-[#04141b]/70">
-                            Here are some of my recent works
-                        </p>
-                    </motion.div>
+            {/* PROJECTS SECTION */}
+            <div id="projects" className="min-h-screen bg-[#efece3] py-16 sm:py-20 md:py-28 px-6 sm:px-12 md:px-16 lg:px-20 xl:px-32 2xl:px-40 relative">
+                {/* Section Label */}
+                <motion.p
+                    className="font-roboto-mono text-xs sm:text-sm tracking-[0.2em] text-[#04141b]/60 uppercase mb-12 sm:mb-16 md:mb-20"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={sectionTitle}
+                    transition={{ duration: 0.6, ...springTransition }}>
+                    / Featured Projects /
+                </motion.p>
 
-                    {/* Projects Grid */}
-                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-                        {/* Project Card 1 */}
-                        <motion.div
-                            className="bg-white/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-98"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.2 }}
-                            variants={cardReveal}
-                            transition={springTransition}>
-                            <div className="h-40 sm:h-48 bg-gradient-to-br from-[#04141b] to-[#03346E] flex items-center justify-center">
-                                <span className="text-[#F0EAD6] text-4xl sm:text-5xl md:text-6xl font-bold">1</span>
-                            </div>
-                            <div className="p-4 sm:p-5 md:p-6">
-                                <h3 className="text-lg sm:text-xl md:text-2xl font-poppins font-bold text-[#04141b] mb-2">
-                                    Portfolio Website
-                                </h3>
-                                <p className="text-sm font-roboto-mono text-[#04141b]/70 mb-4">
-                                    A modern, responsive portfolio website built with React, Laravel, and Framer Motion featuring smooth animations and beautiful UI.
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">React</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">Laravel</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">Tailwind</span>
-                                </div>
-                                <div className="flex gap-4">
-                                    <motion.a
-                                        href="https://github.com/critiasx"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-[#04141b] hover:text-[#03346E] font-roboto-mono text-sm underline"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}>
-                                        View Code →
-                                    </motion.a>
-                                    <motion.a
-                                        href="#"
-                                        className="text-[#04141b] hover:text-[#03346E] font-roboto-mono text-sm underline"
-                                        whileHover={{ scale: 1.05 }}
-                                        whileTap={{ scale: 0.95 }}>
-                                        Live Demo →
-                                    </motion.a>
-                                </div>
-                            </div>
-                        </motion.div>
-                        {/* Project Card 2 */}
-                        <motion.div
-                            className="bg-white/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-98"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.2 }}
-                            variants={cardReveal}
-                            transition={springTransition}>
-                            <div className="h-40 sm:h-48 bg-gradient-to-br from-[#03346E] to-[#021024] flex items-center justify-center">
-                                <span className="text-[#F0EAD6] text-4xl sm:text-5xl md:text-6xl font-bold">2</span>
-                            </div>
-                            <div className="p-4 sm:p-5 md:p-6">
-                                <h3 className="text-lg sm:text-xl md:text-2xl font-poppins font-bold text-[#04141b] mb-2">
-                                    BulSU Intern-Connect
-                                </h3>
-                                <p className="text-sm font-roboto-mono text-[#04141b]/70 mb-4">
-                                    A web application that connects BulSU students with internship opportunities, featuring company profiles and application tracking.
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">Laravel</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">ReactJS</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">TypeScript</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">MySQL</span>
-                                </div>
-                                <div className="flex gap-4">
-                                    <a
-                                        href="https://github.com/CritiasX/InternConnect-BulSU"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-[#04141b] hover:text-[#03346E] font-roboto-mono text-sm underline hover:scale-105 active:scale-95 transition-transform inline-block">
-                                        View Code →
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
-
-                        {/* Project Card 3 */}
-                        <motion.div
-                            className="bg-white/50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 hover:scale-105 active:scale-98"
-                            initial="hidden"
-                            whileInView="visible"
-                            viewport={{ once: true, amount: 0.2 }}
-                            variants={cardReveal}
-                            transition={springTransition}>
-                            <div className="h-40 sm:h-48 bg-gradient-to-br from-[#021024] to-[#04141b] flex items-center justify-center">
-                                <span className="text-[#F0EAD6] text-4xl sm:text-5xl md:text-6xl font-bold">3</span>
-                            </div>
-                            <div className="p-4 sm:p-5 md:p-6">
-                                <h3 className="text-lg sm:text-xl md:text-2xl font-poppins font-bold text-[#04141b] mb-2">
-                                    Survey Builder
-                                </h3>
-                                <p className="text-sm font-roboto-mono text-[#04141b]/70 mb-4">
-                                    A dynamic survey builder application that allows users to create, distribute, and analyze surveys with ease using a user-friendly interface.
-                                </p>
-                                <div className="flex flex-wrap gap-2 mb-4">
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">Django</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">Javascript</span>
-                                    <span className="px-3 py-1 bg-[#04141b]/10 text-[#04141b] text-xs font-roboto-mono rounded-full">MySQL</span>
-                                </div>
-                                <div className="flex gap-4">
-                                    <a
-                                        href="https://github.com/CritiasX/Survey-Web-Builder-Django"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-[#04141b] hover:text-[#03346E] font-roboto-mono text-sm underline hover:scale-105 active:scale-95 transition-transform inline-block">
-                                        View Code →
-                                    </a>
-                                </div>
-                            </div>
-                        </motion.div>
-                    </div>
-
-                    {/* View All Projects Button */}
-                    <motion.div
-                        className="text-center mt-12 sm:mt-16"
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true, amount: 0.3 }}
-                        variants={buttonReveal}
-                        transition={{ duration: 0.6, delay: 0.7 }}>
-                        <a
-                            href="https://github.com/critiasx"
+                {/* Project List */}
+                <div className="relative" onMouseMove={handleProjectMouseMove}>
+                    {projects.map((project, index) => (
+                        <motion.a
+                            key={project.id}
+                            href={project.codeUrl}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="inline-block bg-[#04141b] text-[#F0EAD6] px-6 sm:px-8 py-3 sm:py-4 rounded-4xl font-poppins font-bold hover:bg-[#03346E] transition-all text-sm sm:text-base hover:scale-110 active:scale-95">
-                            View All Projects on GitHub
-                        </a>
-                    </motion.div>
+                            className="group block border-t border-[#04141b]/20 py-8 sm:py-10 md:py-12 cursor-pointer transition-colors duration-300 last:border-b"
+                            initial="hidden"
+                            whileInView="visible"
+                            viewport={{ once: true, amount: 0.2 }}
+                            variants={cardReveal}
+                            transition={{ delay: index * 0.1, ...springTransition }}
+                            onMouseEnter={() => setHoveredProject(project.id)}
+                            onMouseLeave={() => setHoveredProject(null)}>
+                            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+                                <h3 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-poppins font-bold uppercase text-[#04141b] group-hover:text-[#c0392b] transition-colors duration-300 tracking-tight">
+                                    {project.title}
+                                </h3>
+                                <div className="flex flex-wrap gap-2 sm:gap-3">
+                                    {project.tags.map((tag) => (
+                                        <span
+                                            key={tag}
+                                            className="px-3 py-1 border border-[#04141b]/30 text-[#04141b]/70 text-[10px] sm:text-xs font-roboto-mono rounded-full group-hover:border-[#c0392b]/40 group-hover:text-[#c0392b]/70 transition-colors duration-300">
+                                            {tag}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        </motion.a>
+                    ))}
+
+                    {/* Hover Image Preview (placeholder) */}
+                    <AnimatePresence>
+                        {hoveredProject && (
+                            <motion.div
+                                className="hidden lg:flex fixed pointer-events-none z-40 w-[300px] h-[200px] bg-[#04141b] rounded-xl items-center justify-center shadow-2xl"
+                                style={{
+                                    left: mousePos.x + 20,
+                                    top: mousePos.y - 100,
+                                }}
+                                initial={{ opacity: 0, scale: 0.8 }}
+                                animate={{ opacity: 1, scale: 1 }}
+                                exit={{ opacity: 0, scale: 0.8 }}
+                                transition={{ duration: 0.2, ease: 'easeOut' }}>
+                                <span className="text-[#F0EAD6] font-roboto-mono text-sm text-center px-4">
+                                    {projects.find(p => p.id === hoveredProject)?.title} — Preview
+                                </span>
+                            </motion.div>
+                        )}
+                    </AnimatePresence>
                 </div>
+
+                {/* View All Projects Button */}
+                <motion.div
+                    className="mt-12 sm:mt-16 md:mt-20"
+                    initial="hidden"
+                    whileInView="visible"
+                    viewport={{ once: true, amount: 0.3 }}
+                    variants={buttonReveal}
+                    transition={{ duration: 0.6, delay: 0.4 }}>
+                    <a
+                        href="https://github.com/critiasx"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block bg-[#04141b] text-[#F0EAD6] px-6 sm:px-8 py-3 sm:py-4 rounded-4xl font-poppins font-bold hover:bg-[#03346E] transition-all text-sm sm:text-base hover:scale-110 active:scale-95">
+                        View All Projects on GitHub
+                    </a>
+                </motion.div>
             </div>
             {/* Footer*/}
             <div id="contacts" className="bg-[#04141b] text-[#F0EAD6] py-8 sm:py-12 md:py-16 lg:py-20 flex flex-col">
@@ -572,15 +537,11 @@ export default function Home() {
                         opportunities.
                     </span>
                 </div>
-                <a
-                    href="#contacts"
-                    onClick={(e) => {
-                        e.preventDefault();
-                        scrollToSection('#contacts');
-                    }}
-                    className="mt-4 sm:mt-6 bg-[#03346E] hover:bg-[#efece3] hover:text-[#04141b] text-[#F0EAD6] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-4xl font-poppins font-bold hover:scale-110 active:scale-95 transition-transform w-max mx-6 sm:mx-12 md:mx-16 lg:mx-20 xl:mx-32 2xl:mx-40 mb-12 sm:mb-16 md:mb-20 inline-block text-center cursor-pointer text-sm sm:text-base md:text-lg">
+                <button
+                    onClick={() => setShowConnectModal(true)}
+                    className="mt-4 sm:mt-6 bg-[#03346E] hover:bg-[#efece3] hover:text-[#04141b] text-[#F0EAD6] px-5 sm:px-6 md:px-8 py-2.5 sm:py-3 md:py-3.5 rounded-4xl font-poppins font-bold hover:scale-110 active:scale-95 transition-all w-max mx-6 sm:mx-12 md:mx-16 lg:mx-20 xl:mx-32 2xl:mx-40 mb-12 sm:mb-16 md:mb-20 inline-block text-center cursor-pointer text-sm sm:text-base md:text-lg">
                     Let's Connect
-                </a>
+                </button>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8 md:gap-10 lg:gap-12 mt-8 sm:mt-12 md:mt-16 text-xs sm:text-sm md:text-base font-roboto-mono px-6 sm:px-12 md:px-16 lg:px-20 xl:px-32 2xl:px-40">
                     <div className="flex flex-col gap-2 sm:gap-3">
                         <h3 className="font-bold text-sm sm:text-base md:text-lg mb-1 sm:mb-2">Contact</h3>
@@ -617,7 +578,92 @@ export default function Home() {
                     </div>
                 </div>
             </div>
+
+            {/* Connect Modal */}
+            <AnimatePresence>
+                {showConnectModal && (
+                    <motion.div
+                        className="fixed inset-0 z-[100] flex items-center justify-center px-4"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}>
+                        {/* Backdrop */}
+                        <motion.div
+                            className="absolute inset-0 bg-black/60 backdrop-blur-sm"
+                            onClick={() => setShowConnectModal(false)}
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                        />
+                        {/* Modal */}
+                        <motion.div
+                            className="relative bg-[#04141b] text-[#F0EAD6] rounded-3xl p-8 sm:p-10 md:p-12 w-full max-w-lg shadow-2xl"
+                            initial={{ scale: 0.8, opacity: 0, y: 40 }}
+                            animate={{ scale: 1, opacity: 1, y: 0 }}
+                            exit={{ scale: 0.8, opacity: 0, y: 40 }}
+                            transition={{ type: 'spring', stiffness: 200, damping: 20 }}>
+                            {/* Close Button */}
+                            <button
+                                onClick={() => setShowConnectModal(false)}
+                                className="absolute top-4 right-5 text-[#F0EAD6]/60 hover:text-[#F0EAD6] text-2xl transition-colors cursor-pointer"
+                                aria-label="Close modal">
+                                ✕
+                            </button>
+                            <h2 className="text-2xl sm:text-3xl md:text-4xl font-poppins font-bold mb-2">
+                                Let's Connect
+                            </h2>
+                            <p className="font-roboto-mono text-sm text-[#F0EAD6]/60 mb-8">
+                                Reach out through any of these channels.
+                            </p>
+                            <div className="flex flex-col gap-4">
+                                <a
+                                    href="mailto:tjamesroi@gmail.com"
+                                    className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/5 hover:bg-[#03346E] transition-all group">
+                                    <span className="text-xl">✉</span>
+                                    <div>
+                                        <span className="font-poppins font-bold text-sm sm:text-base block">Email</span>
+                                        <span className="font-roboto-mono text-xs text-[#F0EAD6]/60 group-hover:text-[#F0EAD6]/80">tjamesroi@gmail.com</span>
+                                    </div>
+                                </a>
+                                <a
+                                    href="https://www.linkedin.com/in/tanglao-jamesroi-1ab47b189/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/5 hover:bg-[#03346E] transition-all group">
+                                    <span className="text-xl">in</span>
+                                    <div>
+                                        <span className="font-poppins font-bold text-sm sm:text-base block">LinkedIn</span>
+                                        <span className="font-roboto-mono text-xs text-[#F0EAD6]/60 group-hover:text-[#F0EAD6]/80">tanglao-jamesroi</span>
+                                    </div>
+                                </a>
+                                <a
+                                    href="https://github.com/critiasx"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/5 hover:bg-[#03346E] transition-all group">
+                                    <span className="text-xl">⌨</span>
+                                    <div>
+                                        <span className="font-poppins font-bold text-sm sm:text-base block">GitHub</span>
+                                        <span className="font-roboto-mono text-xs text-[#F0EAD6]/60 group-hover:text-[#F0EAD6]/80">@critiasx</span>
+                                    </div>
+                                </a>
+                                <a
+                                    href="https://www.instagram.com/jemsroooii/"
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="flex items-center gap-4 px-5 py-4 rounded-xl bg-white/5 hover:bg-[#03346E] transition-all group">
+                                    <span className="text-xl">📷</span>
+                                    <div>
+                                        <span className="font-poppins font-bold text-sm sm:text-base block">Instagram</span>
+                                        <span className="font-roboto-mono text-xs text-[#F0EAD6]/60 group-hover:text-[#F0EAD6]/80">@jemsroooii</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </>
     );
 }
-// TODO: Message me button
