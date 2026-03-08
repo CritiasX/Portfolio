@@ -506,7 +506,7 @@ export default function Home() {
                         )}
                     </AnimatePresence>
                 </div>
-
+                {/* Projects button */}
                 {/* View All Projects Button */}
                 <motion.div
                     className="mt-12 sm:mt-16 md:mt-20"
