@@ -298,31 +298,26 @@ export default function Home() {
                     animate="visible"
                     variants={marqueeReveal}
                     transition={{ duration: 1, delay: 1.6, ...springTransition }}>
-                    <div className="flex animate-marquee whitespace-nowrap">
-                        <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 items-center mx-8 sm:mx-10 md:mx-12">
-                            <SiReact className="h-7 w-7 text-[#04141b]" />
-                            <SiFramer className="h-7 w-7 text-[#04141b]" />
-                            <SiInertia className="h-7 w-7 text-[#04141b]" />
-                            <SiLaravel className="h-7 w-7 text-[#04141b]" />
-                            <SiPhp className="h-7 w-7 text-[#04141b]" />
-                            <SiTailwindcss className="h-7 w-7 text-[#04141b]" />
-                        </div>
-                        <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 items-center mx-8 sm:mx-10 md:mx-12">
-                            <SiReact className="h-7 w-7 text-[#04141b]" />
-                            <SiFramer className="h-7 w-7 text-[#04141b]" />
-                            <SiInertia className="h-7 w-7 text-[#04141b]" />
-                            <SiLaravel className="h-7 w-7 text-[#04141b]" />
-                            <SiPhp className="h-7 w-7 text-[#04141b]" />
-                            <SiTailwindcss className="h-7 w-7 text-[#04141b]" />
-                        </div>
-                        <div className="flex flex-row gap-8 sm:gap-12 md:gap-16 lg:gap-20 xl:gap-24 items-center mx-8 sm:mx-10 md:mx-12">
-                            <SiReact className="h-7 w-7 text-[#04141b]" />
-                            <SiFramer className="h-7 w-7 text-[#04141b]" />
-                            <SiInertia className="h-7 w-7 text-[#04141b]" />
-                            <SiLaravel className="h-7 w-7 text-[#04141b]" />
-                            <SiPhp className="h-7 w-7 text-[#04141b]" />
-                            <SiTailwindcss className="h-7 w-7 text-[#04141b]" />
-                        </div>
+                    <div className="flex animate-marquee">
+                        {[0, 1].map((copy) => (
+                            <div
+                                key={copy}
+                                className="flex flex-row flex-shrink-0 items-center gap-12 sm:gap-16 md:gap-20 lg:gap-24 xl:gap-28 px-6 sm:px-8 md:px-10"
+                                aria-hidden={copy !== 0}>
+                                <SiReact className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiFramer className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiInertia className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiLaravel className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiPhp className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiTailwindcss className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiReact className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiFramer className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiInertia className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiLaravel className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiPhp className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                                <SiTailwindcss className="h-7 w-7 text-[#04141b] flex-shrink-0" />
+                            </div>
+                        ))}
                     </div>
                 </motion.div>
             </div>
