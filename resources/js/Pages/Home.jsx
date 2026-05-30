@@ -221,9 +221,11 @@ export default function Home() {
                             variants={fadeInLeft}
                             transition={{ duration: 1, delay: 1.2, ...springTransition }}
                             className="w-full sm:w-auto">
-                            <p className="bg-[#04141b] text-[#F0EAD6] px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 rounded-4xl hover:bg-[#03346E] w-full sm:w-auto text-sm sm:text-base cursor-pointer transition-all hover:scale-110 active:scale-95">
+                            <a  href="/Resume.pdf" 
+                                download="Resume" 
+                                className="border-2 border-[#04141b] bg-[#04141b] text-[#efece3] hover:border-[#03346E] hover:text-[#F0EAD6] px-6 sm:px-8 md:px-10 py-3 sm:py-3.5 rounded-4xl hover:bg-[#03346E] w-full sm:w-auto text-sm sm:text-base cursor-pointer transition-all hover:scale-110 active:scale-95 block text-center">
                                 Resume
-                            </p>
+                            </a>
                         </motion.div>
                         <motion.div
                             initial="hidden"
