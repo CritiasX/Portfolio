@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
+import { LuPause, LuPlay } from 'react-icons/lu'
 import * as THREE from 'three'
 import { RoundedBoxGeometry } from 'three/addons/geometries/RoundedBoxGeometry.js'
 import { createRenderScheduler } from './renderScheduler'
@@ -93,7 +94,7 @@ export default function Sculpture() {
       renderer.dispose(); renderer.domElement.remove()
     }
   }, [])
-  return <div className="sculpture-wrap"><div ref={host} className={`sculpture${failed ? ' scene-failed' : ''}`} role="img" aria-label="Three floating data blocks with metallic orbits and a polished slate satellite">{failed && <div className="scene-placeholder"><div className="fallback-orbit"/><span>CONNECTING THE DOTS</span></div>}</div>{!failed && <button className="scene-pause" onClick={() => { const next = !play.current; play.current = next; setPlaying(next); loopRef.current?.setAnimating(next); loopRef.current?.invalidate() }} aria-label={playing ? 'Pause 3D animation' : 'Play 3D animation'}>{playing ? 'Ⅱ' : '▷'}</button>}</div>
+  return <div className="sculpture-wrap"><div ref={host} className={`sculpture${failed ? ' scene-failed' : ''}`} role="img" aria-label="Three floating data blocks with metallic orbits and a polished slate satellite">{failed && <div className="scene-placeholder"><div className="fallback-orbit"/><span>CONNECTING THE DOTS</span></div>}</div>{!failed && <button className="scene-pause" onClick={() => { const next = !play.current; play.current = next; setPlaying(next); loopRef.current?.setAnimating(next); loopRef.current?.invalidate() }} aria-label={playing ? 'Pause 3D animation' : 'Play 3D animation'}>{playing ? <LuPause size={16} aria-hidden="true"/> : <LuPlay size={16} aria-hidden="true"/>}</button>}</div>
 }
 
 

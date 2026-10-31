@@ -52,7 +52,7 @@ html[data-theme='dark'] .tech-filter button:is([aria-pressed='true'], :hover, :f
 html[data-theme='dark'] .tech-grid li { background: var(--night-surface); border-color: var(--line); }
 html[data-theme='dark'] .tech-grid li:hover { background: #20363f; border-color: #aec7cf80; box-shadow: 0 5px 14px #0002; }
 html[data-theme='dark'] .tech-mark { color: #b5cbd3; }
-html[data-theme='dark'] .mark-javascript { background: #38505a; color: #f0eee4; }
+html[data-theme='dark'] .mark-javascript { background: transparent; color: #f0eee4; }
 html[data-theme='dark'] .certification-card { background: var(--night-surface); border-color: var(--line); }
 html[data-theme='dark'] .certification-card:hover { background: #192d36; border-color: #c0d2d455; }
 html[data-theme='dark'] .certification-mark { background: #263d47; color: #d7e3df; }

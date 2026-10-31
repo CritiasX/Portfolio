@@ -21,19 +21,19 @@ export const certifications = [
 ]
 
 export const technologies = [
-  { name: 'Databricks', mark: '▱', group: 'Data & cloud' },
-  { name: 'AWS', mark: 'aws', group: 'Data & cloud' },
-  { name: 'Azure', mark: 'A', group: 'Data & cloud' },
-  { name: 'Python', mark: 'Py', group: 'Languages' },
-  { name: 'Pandas', mark: 'pd', group: 'Data & cloud' },
-  { name: 'Matplotlib', mark: '◔', group: 'Data & cloud' },
-  { name: 'Streamlit', mark: '◭', group: 'Frameworks' },
-  { name: 'Laravel', mark: 'L', group: 'Frameworks' },
-  { name: 'Node.js', mark: 'N', group: 'Frameworks' },
-  { name: 'PHP', mark: 'php', group: 'Languages' },
-  { name: 'JavaScript', mark: 'JS', group: 'Languages' },
-  { name: 'C family', mark: 'C', group: 'Languages' },
-  { name: 'Java', mark: 'J', group: 'Languages' },
+  { name: 'Databricks', group: 'Data & cloud' },
+  { name: 'AWS', group: 'Data & cloud' },
+  { name: 'Azure', group: 'Data & cloud' },
+  { name: 'Python', group: 'Languages' },
+  { name: 'Pandas', group: 'Data & cloud' },
+  { name: 'Matplotlib', group: 'Data & cloud' },
+  { name: 'Streamlit', group: 'Frameworks' },
+  { name: 'Laravel', group: 'Frameworks' },
+  { name: 'Node.js', group: 'Frameworks' },
+  { name: 'PHP', group: 'Languages' },
+  { name: 'JavaScript', group: 'Languages' },
+  { name: 'C family', group: 'Languages' },
+  { name: 'Java', group: 'Languages' },
 ]
 
 export const projects = [

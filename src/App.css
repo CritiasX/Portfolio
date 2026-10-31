@@ -20,6 +20,16 @@
 .project-screenshot{width:100%;height:100%;object-fit:cover}.wordmark>span{color:var(--clay)}
 
 /* Ivory / ink finish, navigation states, and interaction details. */
+.ui-icon{display:inline-flex;align-items:center;justify-content:center;vertical-align:middle;line-height:1;flex-shrink:0}
+.ui-icon>svg{display:block}
+.tech-mark{display:inline-flex;align-items:center;justify-content:center;min-width:20px}
+.tech-mark>svg{display:block;width:20px;height:20px}
+.tech-mark.mark-javascript{background:transparent;padding:0;border-radius:0}
+.scene-pause,.carousel-arrows button,.dialog-close{display:grid;place-items:center;padding:0}
+.visual-caption>span{display:inline-flex;align-items:center;gap:6px}
+.sheet-button .ui-icon{font-size:10px;margin-left:5px}
+.contact-bottom>a{display:inline-flex;align-items:center;gap:6px}
+@media(max-width:580px){.menu-toggle{display:inline-flex;align-items:center;justify-content:center;gap:7px}.tech-mark>svg{width:17px;height:17px}}
 .theme-toggle{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:36px;padding:8px 12px;border:1px solid var(--line);border-radius:999px;background:transparent;color:var(--ink);font:10px/1.3 Consolas,monospace;flex-shrink:0;transition:background .25s,color .25s,border-color .25s}
 .theme-toggle svg{transition:transform .35s ease}
 .theme-toggle:is(:hover,:focus-visible){background:var(--ink);color:var(--paper)}

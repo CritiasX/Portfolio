@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { LuArrowLeft, LuArrowRight } from 'react-icons/lu'
 import './GameCarousel.css'
 
 const games = [
@@ -37,7 +38,7 @@ export default function GameCarousel() {
       <p className="eyebrow">OFF THE CLOCK</p>
       <h3>One more<br/>{' '}<em>game?</em></h3>
       <p>Competitive lobbies.<br/>Stories worth getting lost in.</p>
-      <div className="game-carousel-controls"><button type="button" onClick={() => next(-1)} aria-label="Previous game">←</button><span aria-hidden="true">0{current + 1}<i> / 0{games.length}</i></span><button type="button" onClick={() => next(1)} aria-label="Next game">→</button></div>
+      <div className="game-carousel-controls"><button type="button" onClick={() => next(-1)} aria-label="Previous game"><LuArrowLeft size={16} aria-hidden="true"/></button><span aria-hidden="true">0{current + 1}<i> / 0{games.length}</i></span><button type="button" onClick={() => next(1)} aria-label="Next game"><LuArrowRight size={16} aria-hidden="true"/></button></div>
     </div>
     <div className="game-carousel-main">
       <div className="game-carousel-stage" role="group" tabIndex={0} aria-label="Use left and right arrow keys to change games">
