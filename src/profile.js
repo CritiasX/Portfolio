@@ -1,4 +1,6 @@
 // Your portfolio content lives here. Image paths are relative to public/.
+import { photoAssets } from './photoAssets'
+
 export const profile = {
   name: 'James Roi Tanglao',
   shortName: 'James',
@@ -11,9 +13,9 @@ export const profile = {
 }
 
 export const photos = [
-  { src: '/photos/james-graduation.jpg', alt: 'James Roi Tanglao in his graduation gown holding his cap', title: 'The person behind the code', label: 'Graduation day', tone: 'sage', position: '50% 35%' },
-  { src: '/photos/james-downtime.jpg', alt: 'James seated beneath colorful lanterns at a restaurant', title: 'Life beyond the screen', label: 'Off the clock', tone: 'clay', position: '50% 50%' },
-  { src: '/photos/james-moment.jpg', alt: 'James sharing a playful moment with a young child', title: 'The in-between moments', label: 'Everyday things', tone: 'blue', position: '50% 40%' },
+  { ...photoAssets.graduation, alt: 'James Roi Tanglao in his graduation gown holding his cap', title: 'The person behind the code', label: 'Graduation day', tone: 'sage', position: '50% 35%' },
+  { ...photoAssets.downtime, alt: 'James seated beneath colorful lanterns at a restaurant', title: 'Life beyond the screen', label: 'Off the clock', tone: 'clay', position: '50% 50%' },
+  { ...photoAssets.moment, alt: 'James sharing a playful moment with a young child', title: 'The in-between moments', label: 'Everyday things', tone: 'blue', position: '50% 40%' },
 ]
 
 export const certifications = [

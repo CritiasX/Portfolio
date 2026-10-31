@@ -4,6 +4,7 @@ import usePortfolioMotion from './usePortfolioMotion'
 import GameCarousel from './GameCarousel'
 import ThemeToggle from './ThemeToggle'
 import TechnologyIcon from './TechnologyIcon'
+import LazyImage from './LazyImage'
 import { LuArrowDownRight, LuArrowUpRight, LuArrowRight, LuArrowLeft, LuArrowDown, LuArrowUp, LuArrowDownUp, LuAsterisk, LuChevronRight, LuCheck, LuCornerDownRight, LuX, LuMenu, LuChartNoAxesColumnIncreasing, LuMousePointer2, LuMail } from 'react-icons/lu'
 import { FaGithub, FaLinkedinIn, FaInstagram } from 'react-icons/fa6'
 import './App.css'
@@ -40,7 +41,7 @@ function PhotoCarousel() {
   return (
     <div className="photo-carousel" role="region" aria-roledescription="carousel" aria-label="Photos of James">
       <div className={`photo-frame photo-${photo.tone}`} onKeyDown={(e) => { if (e.key === 'ArrowRight') { e.preventDefault(); next(1) } if (e.key === 'ArrowLeft') { e.preventDefault(); next(-1) } }} tabIndex={0} aria-label="Photo carousel. Use left and right arrow keys to change photos.">
-        {photo.src && !broken[current] ? <img key={photo.src} src={photo.src} alt={photo.alt} loading="lazy" decoding="async" style={{ objectPosition: photo.position || '50% 50%' }} onError={() => setBroken((prev) => ({ ...prev, [current]: true }))} /> : <div className="photo-placeholder"><div className="photo-sun" /><div className="photo-hill hill-back" /><div className="photo-hill hill-front" /><span className="photo-center">JRT<span>YOUR PHOTO GOES HERE</span></span><span className="photo-corner">A MOMENT, WAITING TO BE CAPTURED.</span></div>}
+        {photo.src && !broken[current] ? <LazyImage key={photo.src} src={photo.src} srcSet={photo.srcSet} sizes="(max-width: 580px) 90vw, (max-width: 1100px) 42vw, (max-width: 1440px) 40vw, 568px" width={photo.width} height={photo.height} alt={photo.alt} style={{ objectPosition: photo.position || '50% 50%' }} onError={() => setBroken((prev) => ({ ...prev, [current]: true }))} /> : <div className="photo-placeholder"><div className="photo-sun" /><div className="photo-hill hill-back" /><div className="photo-hill hill-front" /><span className="photo-center">JRT<span>YOUR PHOTO GOES HERE</span></span><span className="photo-corner">A MOMENT, WAITING TO BE CAPTURED.</span></div>}
         <span className="photo-number">0{current + 1} / 0{photos.length}</span>
         {(!photo.src || broken[current]) && <span className="photo-stamp">MORE THAN<br/>A JOB TITLE.</span>}
       </div>
@@ -70,7 +71,7 @@ function ProjectArtwork({ theme }) {
 function ProjectVisual({ project }) {
   const [broken, setBroken] = useState(false)
   return project.image && !broken
-    ? <img className="project-screenshot" src={project.image} alt={`${project.title} screenshot`} loading="lazy" onError={() => setBroken(true)} />
+    ? <LazyImage className="project-screenshot" src={project.image} alt={`${project.title} screenshot`} onError={() => setBroken(true)} />
     : <ProjectArtwork theme={project.theme}/>
 }
 

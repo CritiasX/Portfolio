@@ -30,7 +30,11 @@ Publish `dist/` on a static host. If deploying under a subdirectory such as GitH
 
 ### Photo carousel
 
-Put photos in `public/photos/`, then set each slide's `src` (e.g. `/photos/james.webp`), `alt`, title, and label. Portraits around 4:5 work well. Empty/broken paths show designed placeholders. Visitors can use previous/next, slide buttons, and keyboard arrows. The carousel does not auto-advance.
+Photo originals live in `public/photos/`. Run `pnpm images:optimize` after replacing the current originals to regenerate 480px, 960px, and 1440px WebP versions plus `src/photoAssets.js`. New photos can be added to the source map in `scripts/optimize-photos.mjs` and referenced from `src/profile.js`. Sharp runs only during asset preparation; the site remains a static frontend.
+
+The browser selects a size for the current screen through `srcSet` and `sizes`. The three 960px versions total about 253 KiB, down from 1,030 KiB for the JPG originals (75% smaller). Actual transfer depends on screen size and cache. Original files are retained.
+
+`src/LazyImage.jsx` attaches image sources only within 200px of the viewport, with native lazy loading and asynchronous decoding as well. Only the selected carousel photo mounts; other slides do not download ahead of selection. Explicit dimensions reserve space. Project screenshots use the same lazy component. Empty/broken paths show designed placeholders. Visitors can use previous/next, slide buttons, and keyboard arrows; slides do not auto-advance.
 
 The supplied photos appear as graduation portrait, restaurant photo, then the playful snapshot. Each slide has a `position` for responsive framing; the decorative placeholder stamp is hidden on real photos.
 
