@@ -1,0 +1,95 @@
+.fragrance-gallery {
+  background: #06171d;
+  color: #eeece2;
+  border: 1px solid #06171d;
+  border-radius: 8px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.fragrance-gallery-top { display:flex; justify-content:space-between; gap:12px; padding:25px 30px 0; font:9px/1.6 Consolas,monospace; letter-spacing:1.5px; color:#abb7ba; }
+.fragrance-stage { height:360px; position:relative; touch-action:pan-y; background:radial-gradient(ellipse at 50% 60%,#46677625,transparent 70%); }
+.fragrance-stage.is-dragging { cursor:grabbing!important; }
+.fragrance-stage canvas { display:block; position:relative; z-index:1; }
+.fragrance-info { display:flex; align-items:center; justify-content:space-between; gap:24px; padding:0 30px 27px; }
+.fragrance-kicker { font:9px/1.6 Consolas,monospace; letter-spacing:1.5px; color:#91a3ab; margin:0 0 8px!important; }
+.fragrance-info h3 { font-family:Georgia,serif; font-size:34px; font-weight:400; letter-spacing:-.7px; margin:0 0 8px; color:#eeece2; }
+.fragrance-detail { font-size:12px; line-height:1.6; color:#aab7bc; margin:0!important; }
+.fragrance-rotation { display:flex; flex-direction:column; gap:11px; align-items:flex-end; }
+.fragrance-spin-status { font:8px/1.5 Consolas,monospace; letter-spacing:1.5px; color:#91a3ab; }
+.fragrance-rotation>div { display:flex; gap:7px; }
+.fragrance-rotation button { appearance:none; display:grid; place-items:center; background:transparent; border:1px solid #eeece23a; color:#eeece2; width:36px; height:36px; border-radius:50%; font-size:21px; cursor:pointer; transition:background .2s,color .2s,transform .2s; }
+.fragrance-rotation .fragrance-spin-toggle { font-size:13px; }
+.fragrance-rotation button:hover { background:#eeece2; color:#06171d; transform:translateY(-2px); }
+.fragrance-spin-toggle[aria-pressed=true] { background:#eeece2; color:#06171d; }
+.fragrance-gallery button:focus-visible { outline:2px solid #eeece2; outline-offset:-4px; }
+.fragrance-switcher { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); border-top:1px solid #eeece226; border-bottom:1px solid #eeece226; }
+.fragrance-switcher button { appearance:none; display:flex; align-items:center; gap:9px; padding:21px 17px; background:transparent; border:0; border-right:1px solid #eeece226; color:#bbc5c8; font:inherit; font-size:11px; cursor:pointer; text-align:left; min-width:0; transition:background .25s,color .25s; }
+.fragrance-switcher button:last-child { border-right:0; }
+.fragrance-switcher button:hover { background:#eeece214; }
+.fragrance-switcher button.is-active { background:#eeece2; color:#06171d; }
+.fragrance-switcher button small { font:8px Consolas,monospace; margin-left:auto; opacity:.65; }
+.fragrance-swatch { width:8px; height:8px; border-radius:50%; box-shadow:0 0 0 1px #eeece238; flex-shrink:0; }
+.fragrance-gallery-note { display:flex; justify-content:space-between; gap:20px; padding:17px 30px; font-size:9px; color:#96a8af; line-height:1.7; letter-spacing:.2px; }
+.fragrance-fallback { display:flex; align-items:flex-end; justify-content:center; gap:30px; height:100%; padding:50px 25px; position:absolute; inset:0; z-index:2; background:#06171d; perspective:800px; }
+.fragrance-stage.has-fallback canvas { visibility:hidden; }
+.fragrance-flat-bottle { position:relative; width:86px; height:152px; border:0; background:linear-gradient(90deg,#7aa9bd,#c4e3ec,#7ca8bb); border-radius:7px 7px 4px 4px; box-shadow:inset -8px 0 12px #0002,inset 4px 0 5px #ffffff33; transform:scale(.96); transition:transform .2s; flex-shrink:0; cursor:pointer; }
+.fragrance-flat-bottle::before { content:''; position:absolute; width:58px; height:35px; background:linear-gradient(90deg,#717d83,#e3e7e8,#7b878d); left:50%; transform:translateX(-50%); top:-33px; border-radius:4px 4px 0 0; }
+.fragrance-flat-bottle>span { position:absolute; top:44%; left:8px; right:8px; text-align:center; background:#06171dd9; padding:12px 3px; color:#eeece2; font:9px/1.4 Georgia,serif; }
+.fragrance-flat-bottle.is-active { transform:scale(1.025); outline:1px solid #eeece260; outline-offset:5px; }
+.fragrance-flat-bottle.blue { background:linear-gradient(90deg,#123a61,#245c8b,#102f53); }
+.fragrance-flat-bottle.amber { background:linear-gradient(90deg,#966320,#cd943d,#966320); width:76px; }
+.fragrance-flat-bottle.black { background:linear-gradient(90deg,#111a20,#27333b,#10191f); border-radius:3px; }
+.fragrance-flat-bottle.amber::before,.fragrance-flat-bottle.black::before { background:linear-gradient(90deg,#0c151a,#36434a,#0c151a); }
+.fragrance-flat-bottle.is-spinning { animation:fragrance-turn 5s linear infinite; }
+@keyframes fragrance-turn { from{transform:rotateY(0)} to{transform:rotateY(360deg)} }
+@media(max-width:700px) {
+  .fragrance-gallery-top { padding:22px 22px 0; font-size:8px; }
+  .fragrance-stage { height:280px; }
+  .fragrance-info { padding:0 22px 24px; }
+  .fragrance-info h3 { font-size:29px; }
+  .fragrance-switcher { grid-template-columns:repeat(2,minmax(0,1fr)); }
+  .fragrance-switcher button { padding:17px; font-size:11px; }
+  .fragrance-switcher button:nth-child(2) { border-right:0; }
+  .fragrance-switcher button:nth-child(-n+2) { border-bottom:1px solid #eeece226; }
+  .fragrance-gallery-note { padding:16px 22px; font-size:8px; flex-direction:column; gap:4px; }
+  .fragrance-fallback { gap:18px; padding-inline:20px; }
+  .fragrance-flat-bottle { width:62px; height:118px; }
+  .fragrance-flat-bottle.amber { width:54px; }
+  .fragrance-flat-bottle::before { width:43px; height:28px; top:-26px; }
+  .fragrance-flat-bottle>span { font-size:7px; left:5px; right:5px; }
+}
+@media(max-width:400px) {
+  .fragrance-gallery-top { font-size:7px; letter-spacing:1px; padding:20px 17px 0; }
+  .fragrance-stage { height:250px; }
+  .fragrance-info { padding:0 17px 22px; gap:12px; }
+  .fragrance-rotation button { width:31px; height:31px; font-size:19px; }
+  .fragrance-rotation>div { gap:4px; }
+  .fragrance-spin-status { font-size:7px; }
+  .fragrance-info h3 { font-size:26px; }
+  .fragrance-detail { max-width:170px; font-size:11px; }
+  .fragrance-fallback { gap:13px; }
+  .fragrance-flat-bottle { width:47px; height:96px; }
+  .fragrance-flat-bottle.amber { width:43px; }
+  .fragrance-flat-bottle::before { width:34px; height:24px; top:-22px; }
+  .fragrance-flat-bottle>span { font-size:6px; left:3px; right:3px; padding:8px 2px; }
+}
+html.motion-off .fragrance-gallery * { transition:none!important; }
+/* Bottle-specific fallback silhouettes follow the supplied references. */
+.fragrance-flat-bottle.ice { background:linear-gradient(#8695c6,#3786b4 55%,#195e79); border-radius:18px 18px 20px 20px; border:5px solid #a6d5e4; }
+.fragrance-flat-bottle.ice::before { background:repeating-linear-gradient(0deg,#dce8e3 0 4px,#bbc9c5 4px 5px); border-radius:40% 40% 16% 16%; width:45px; height:38px; top:-38px; }
+.fragrance-flat-bottle.ice>span { background:transparent; font-size:11px; padding:0; top:45%; }
+.fragrance-flat-bottle.blue { background:linear-gradient(110deg,#1a31ae,#2446cf 45%,#0c1d70); border-radius:3px; }
+.fragrance-flat-bottle.blue>span,.fragrance-flat-bottle.black>span { top:auto; bottom:10px; background:transparent; padding:0; }
+.fragrance-flat-bottle.blue::after,.fragrance-flat-bottle.black::after { content:''; position:absolute; width:27px; height:27px; border-radius:50%; background:#c8d0d5; top:43%; left:50%; transform:translateX(-50%); box-shadow:0 -28px 0 -12px #a9b1b6; }
+.fragrance-flat-bottle.black::after { background:#1b2026; border:1px solid #69747b; }
+.fragrance-flat-bottle.yellow { background:linear-gradient(90deg,#9f8b15,#e9d743 30%,#ceba2d 75%,#8e7d12); border-radius:12% 12% 18% 18%; border-top:2px dashed #665b1f; border-bottom:2px dashed #665b1f; }
+.fragrance-flat-bottle.yellow::before { background:linear-gradient(90deg,#0a1217,#32434e,#0a1217); border-radius:25% 25% 12% 12%; width:53px; height:40px; top:-39px; }
+.fragrance-flat-bottle.yellow::after { content:''; position:absolute; right:-8px; top:-37px; width:15px; height:30px; border:3px solid #17252e; border-left:0; border-radius:0 7px 7px 0; }
+.fragrance-flat-bottle.yellow>span { background:transparent; color:#796614; text-transform:uppercase; font-size:10px; }
+@media(max-width:700px) { .fragrance-flat-bottle.ice::before{width:35px;height:30px;top:-30px}.fragrance-flat-bottle.yellow::before{width:42px;height:32px;top:-31px}.fragrance-flat-bottle.yellow::after{top:-30px;height:24px}.fragrance-flat-bottle.ice>span,.fragrance-flat-bottle.yellow>span{font-size:8px}.fragrance-flat-bottle.blue::after,.fragrance-flat-bottle.black::after{width:20px;height:20px} }
+@media(max-width:400px) { .fragrance-flat-bottle.ice::before{width:27px;height:26px;top:-26px}.fragrance-flat-bottle.yellow::before{width:33px;height:27px;top:-26px}.fragrance-flat-bottle.yellow::after{top:-25px;height:20px}.fragrance-flat-bottle.ice>span,.fragrance-flat-bottle.yellow>span{font-size:6px} }
+
+/* A quiet studio stage lets curved glass and the actual 3D shadows carry the detail. */
+.fragrance-stage { height:390px; background:radial-gradient(ellipse at 50% 68%,#52657835,transparent 69%),linear-gradient(#0b161d,#0e1b24); }
+@media(max-width:700px){.fragrance-stage{height:290px}}
+@media(max-width:400px){.fragrance-stage{height:260px}}
